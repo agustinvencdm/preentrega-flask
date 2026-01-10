@@ -1,0 +1,49 @@
+@use "variables" as v;
+
+
+.imagenfondo{
+    background-color: #010d01;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.backimg{
+    text-align: v.$aling;
+    font-size: 25px;
+    font-family: "DM Sans", sans-serif;
+.imagenes{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    img{
+        width: 100%;
+        padding: 2px;
+    }
+    .movimiento{
+        transition: transform 0.6s ease;
+}:hover{
+    transform: translateY(-5px);
+}
+}
+}
+.footerprincipal{
+background: #010d01;
+background: linear-gradient(90deg, rgba(1, 13, 1, 1) 0%, rgba(98, 184, 6, 1) 50%, rgba(2, 15, 2, 1) 100%);
+width: 100%;
+margin: 0;
+padding: 0;
+}
+
+.textoo{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    color: white;
+}
+
+.subtitulo{
+    color: white;
+}
+
+
+

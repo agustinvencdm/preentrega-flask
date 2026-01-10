@@ -1,0 +1,15 @@
+/* scss/_resaltado.scss */
+
+@use "variables" as v;
+
+.resaltado {
+    background: rgb(255, 255, 0);
+    color: black;
+}
+
+#mensaje-busqueda {
+    display: block;
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}

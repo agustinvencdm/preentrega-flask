@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='assets/Xbox_one_logo.svg.png') }}" type="image/x-icon">
+    <title>Xbox-Consolas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a href="{{ url_for('index') }}"><img
+                        src="{{ url_for('static', filename='assets/Xbox-Logo.wine.png') }}" alt=""
+                        class="logo-principal"></a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('suscripciones') }}">Suscrpciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="{{ url_for('juegos') }}">Juegos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Consolas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('contacto') }}">Contacto</a>
+                        </li>
+
+                    </ul>
+                    <form class="d-flex flex-column" role="search">
+                        <div class="d-flex">
+                            <input id="buscador" class="form-control me-2" type="search" placeholder="Buscar"
+                                aria-label="Search" />
+                            <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        </div>
+                        <span id="mensaje-busqueda"></span>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+
+    <main class="dosconsolas">
+        <section class="consolas">
+            <article class="consola">
+                <div class="xboxs"><a href="https://www.xbox.com/es-ar/consoles/xbox-series-s?xr=shellnav"
+                        target="_blank"><img src="{{ url_for('static', filename='assets/xbox series S.jpg') }}"
+                            alt=""></a></div>
+                <h2>Xbox Series S</h2>
+                <p class="contenido">La Xbox Series S es la consola más compacta y económica de la nueva generación.
+                    Está pensada para
+                    jugar en digital, con gran velocidad de carga gracias a su SSD y soporte para 1440p con reescalado a
+                    4K. Es silenciosa, eficiente y perfecta para quienes buscan rendimiento a buen precio.</p>
+                <ul class="contenido">
+                    <li>Resolución: 1440p (reescalado a 4K)</li>
+                    <li>Almacenamiento: SSD 512 GB NVMe</li>
+                    <li>CPU: AMD Zen 2 8 núcleos a 3.6 GHz</li>
+                    <li>GPU: 4 TFLOPS RDNA 2</li>
+                    <li>RAM: 10 GB GDDR6</li>
+                    <li>Formato: Solo digital (sin lectora)</li>
+                    <li>Tasa de refresco: Hasta 120 FPS</li>
+                    <li>Tamaño compacto y muy silenciosa</li>
+                </ul>
+            </article>
+
+            <article class="consola">
+                <div class="xboxs"><a href="https://www.xbox.com/es-ar/consoles/xbox-series-x?xr=shellnav"
+                        target="_blank"><img src="{{ url_for('static', filename='assets/xbox series x.png') }}"
+                            alt=""></a></div>
+                <h2>Xbox Series X</h2>
+                <p class="contenido">La Xbox Series X es la consola más potente de Microsoft. Diseñada para jugar en 4K
+                    reales, ofrece
+                    tiempos de carga mínimos, gráficos de alta calidad y un rendimiento superior para juegos exigentes.
+                    Es ideal para quienes buscan la mejor experiencia next-gen.</p>
+                <ul class="contenido">
+                    <li>Resolución: 4K nativos (hasta 8K)</li>
+                    <li>Almacenamiento: SSD 1 TB NVMe</li>
+                    <li>CPU: AMD Zen 2 8 núcleos a 3.8 GHz</li>
+                    <li>GPU: 12 TFLOPS RDNA 2</li>
+                    <li>RAM: 16 GB GDDR6</li>
+                    <li>Formato: Con lectora Blu-Ray 4K UHD</li>
+                    <li>Tasa de refresco: Hasta 120 FPS</li>
+                    <li>Excelente rendimiento y enfriamiento silencioso</li>
+                </ul>
+            </article>
+        </section>
+    </main>
+
+    <footer class="xbox-footer">
+
+        <div class="seguinos">
+            <h2>Seguinos</h2>
+            <div class="iconos">
+                <a href="https://whatsapp.com/channel/0029Va4J1hI5a248Y7hu6A2Y" target="_blank"><img
+                        src="{{ url_for('static', filename='assets/whatsapp.png') }}" alt=""></a>
+                <a href="https://www.tiktok.com/@xbox?lang=es" target="_blank"><img
+                        src="{{ url_for('static', filename='assets/tik-tok.png') }}" alt=""></a>
+                <a href="https://x.com/xbox" target="_blank"><img
+                        src="{{ url_for('static', filename='assets/gorjeo.png') }}" alt=""></a>
+                <a href="https://www.facebook.com/xbox/?locale=es_LA" target="_blank"><img
+                        src="{{ url_for('static', filename='assets/facebook.png') }}" alt=""></a>
+                <a href="https://www.instagram.com/xbox/?hl=es" target="_blank"><img
+                        src="{{ url_for('static', filename='assets/logotipo-de-instagram.png') }}" alt=""></a>
+            </div>
+        </div>
+
+        <div class="logo">
+            <img src="{{ url_for('static', filename='assets/logo xbox blanco.jpg') }}" alt="Xbox logo">
+        </div>
+        <div class="derechos">
+            <h3>© 2025 - Sitio de Xbox - Todos los derechos reservados - Desarrollado por Agustin Ventrice</h3>
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+        </script>
+    <script src="{{ url_for('static', filename='js/buscador.js') }}"></script>
+
+
+
+</body>
+
+</html>

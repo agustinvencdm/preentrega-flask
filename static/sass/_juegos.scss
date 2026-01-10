@@ -1,0 +1,37 @@
+@use "variables"as v;
+
+
+.sectionjuegos {
+    background-image: url('../assets/fondo juegos.png');
+    background-position: center;
+    background-attachment: fixed;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    min-height: 100vh; /* ✔ mejor que height: 100vh */
+}
+
+/* imágenes */
+.imagenesjuegos img {
+    width: v.$width3;
+    height: 400px;
+    border: 10px solid white;
+    border-radius: 5px;
+    box-shadow: 0 0 20px black;
+    background: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* hover correcto */
+.imagenesjuegos img:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 25px black;
+}
+
+

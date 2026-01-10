@@ -1,0 +1,13 @@
+@use "variables" as v;
+
+
+
+a{
+    font-family: v.$fuente;
+    text-decoration: none;
+}
+
+.logo-principal{
+    width: 130px;
+}
+

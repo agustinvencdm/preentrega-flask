@@ -1,0 +1,214 @@
+@use "variables" as v;
+
+.fondo{
+    background: #f5f5f5;
+background: linear-gradient(90deg, rgba(245, 245, 245, 1) 0%, rgba(6, 184, 39, 1) 51%, rgba(199, 237, 194, 1) 100%);
+}
+
+/* Contenedor del formulario */
+.form-container {
+    width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: #0a0f0a;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(7, 226, 7, 0.2);
+    color: white;
+    font-family: Arial, sans-serif;
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    position: relative;
+}
+
+/* Título */
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #8aff8a;
+    text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
+
+/* Agrupación de inputs */
+.escritura{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.escritura label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #9bff9b;
+}
+
+.escritura input,
+.escritura textarea {
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #1f301f;
+    background: #111;
+    color: white;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.escritura input:focus,
+.escritura textarea:focus {
+    border-color: #00cc44;
+    box-shadow: 0 0 8px rgba(0, 255, 100, 0.5);
+    outline: none;
+}
+
+.escritura textarea {
+    resize: none;
+    height: 120px;
+}
+
+/* Botones */
+.botones{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.boton {
+    width: 48%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+/* Botón enviar */
+.enviar {
+    background: #00cc44;
+    color: black;
+}
+
+.enviar:hover {
+    background: #00ff55;
+    box-shadow: 0 0 10px #00ff55;
+}
+
+/* Botón reiniciar */
+.reiniciar {
+    background: #444;
+    color: white;
+}
+
+.reiniciar:hover {
+    background: #666;
+}
+
+
+
+.input-error {
+    color: #FF3B30;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 4px;
+    display: block;
+}
+
+
+
+
+.spinner-overlay {
+    position: absolute;       /* sobre el formulario */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4); /* fondo oscuro semi-transparente */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;           /* encima de todo */
+}
+
+
+
+.spinner {
+    width: 80px;              /* más grande */
+    height: 80px;
+    border: 8px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* Fondo oscuro */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+/* Tarjeta */
+.modal-card {
+    background: #5f5f5f;
+    padding: 2rem 3rem;
+    border-radius: 18px;
+    border: 3px solid #2cff7d;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(44, 255, 125, 0.5);
+    animation: scaleIn 0.3s ease;
+}
+
+/* Círculo del check */
+.check-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 4px solid #2cff7d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 48px;
+    color: #2cff7d;
+}
+
+/* Texto */
+.modal-text {
+    color: #9affc7;
+    font-size: 18px;
+    margin: 0;
+}
+
+/* Animación */
+@keyframes scaleIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+
+
+

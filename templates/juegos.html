@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='assets/Xbox_one_logo.svg.png') }}" type="image/x-icon">
+    <title>Xbox-Juegos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+</head>
+
+<body>
+
+
+    <header class="header">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a href="{{ url_for('index') }}"><img
+                        src="{{ url_for('static', filename='assets/Xbox-Logo.wine.png') }}" alt=""
+                        class="logo-principal"></a>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="{{ url_for('index') }}">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('suscripciones') }}">Suscrpciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Juegos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('consolas') }}">Consolas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('contacto') }}">Contacto</a>
+                        </li>
+
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        <div id="mensaje-busqueda" style="color: red; margin-top: 5px; font-size: 0.9em;"></div>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+
+    <main>
+        <section class="sectionjuegos">
+            <div class="imagenesjuegos"><a href="https://www.xbox.com/es-AR/games/store/battlefield-6/9P2FF14JZLL3"
+                    target="_blank"><img src="{{ url_for('static', filename='assets/battlefield 6.avif') }}" alt=""></a>
+            </div>
+            <div class="imagenesjuegos"><a href="https://www.xbox.com/es-ES/games/call-of-duty-black-ops-7"
+                    target="_blank"><img
+                        src="{{ url_for('static', filename='assets/call_of_duty_black_ops_7-5967256.webp') }}"
+                        alt=""></a></div>
+            <div class="imagenesjuegos"> <a
+                    href="https://www.xbox.com/es-AR/games/store/ea-sports-fc-26-para-xbox-series-xs/9p9ftxpkq35p"
+                    target="_blank"> <img src="{{ url_for('static', filename='assets/fifa 26.webp') }}" alt=""></a>
+            </div>
+            <div class="imagenesjuegos"> <a href="https://www.xbox.com/es-AR/games/store/fortnite/BT5P2X999VH2"
+                    target="_blank"> <img src="{{ url_for('static', filename='assets/fortnite.png') }}" alt=""></a>
+            </div>
+            <div class="imagenesjuegos"> <a
+                    href="https://www.xbox.com/es-AR/games/store/grand-theft-auto-v-xbox-series-xs/9nxmbtb02zsf"
+                    target="_blank"> <img src="{{ url_for('static', filename='assets/gta 5.jpg') }}" alt=""></a></div>
+            <div class="imagenesjuegos"> <a
+                    href="https://www.xbox.com/es-AR/games/store/nba-2k26-para-xbox-series-xs/9NFKCJNBR34N"
+                    target="_blank"> <img src="{{ url_for('static', filename='assets/nba 2k 26.jpg') }}" alt=""></a>
+            </div>
+            <div class="imagenesjuegos"> <a href="https://www.xbox.com/es-AR/games/forza-horizon-5" target="_blank"><img
+                        src="{{ url_for('static', filename='assets/forza horizon 5.jpg') }}" alt=""></a> </div>
+            <div class="imagenesjuegos"> <a
+                    href="https://www.xbox.com/es-AR/games/store/halo-infinite/9NP1P1WFS0LB/0010" target="_blank"><img
+                        src="{{ url_for('static', filename='assets/halo.jpg') }}" alt=""></a></div>
+            <div class="imagenesjuegos"><a
+                    href="https://www.xbox.com/es-AR/games/store/call-of-duty-warzone/9NNFG8BQRCXL" target="_blank">
+                    <img src="{{ url_for('static', filename='assets/warzone.jpeg') }}" alt=""></a></div>
+            <div class="imagenesjuegos"> <a href="https://www.xbox.com/es-AR/games/store/rocket-league/c125w9bg2k0v"
+                    target="_blank"> <img src="{{ url_for('static', filename='assets/rocket league.avif') }}"
+                        alt=""></a></div>
+        </section>
+    </main>
+
+    <footer class="xbox-footer">
+
+        <div class="seguinos">
+            <h2>Seguinos</h2>
+            <div class="iconos">
+                <a href="https://whatsapp.com/channel/0029Va4J1hI5a248Y7hu6A2Y" target="_blank"><img
+                        src="{{ url_for('static', filename='assets/whatsapp.png') }}" alt=""></a>
+                <a href="https://www.tiktok.com/@xbox?lang=es" target="_blank"><img
+                        src="{{ url_for('static', filename='assets/tik-tok.png') }}" alt=""></a>
+                <a href="https://x.com/xbox" target="_blank"><img
+                        src="{{ url_for('static', filename='assets/gorjeo.png') }}" alt=""></a>
+                <a href="https://www.facebook.com/xbox/?locale=es_LA" target="_blank"><img
+                        src="{{ url_for('static', filename='assets/facebook.png') }}" alt=""></a>
+                <a href="https://www.instagram.com/xbox/?hl=es" target="_blank"><img
+                        src="{{ url_for('static', filename='assets/logotipo-de-instagram.png') }}" alt=""></a>
+            </div>
+        </div>
+
+        <div class="logo">
+            <img src="{{ url_for('static', filename='assets/logo xbox blanco.jpg') }}" alt="Xbox logo">
+        </div>
+        <div class="derechos">
+            <h3>© 2025 - Sitio de Xbox - Todos los derechos reservados - Desarrollado por Agustin Ventrice</h3>
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+        </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+@use "variables" as v;
+
+
+.conjuntoimg{
+    display: flex;
+    justify-content: center;
+}
+
+.imagen1{
+    width: v.$width2;
+}
+
+.imagen2{
+    width: v.$width2;
+}
+
+.imagen3{
+    width: v.$width2;
+}
+
+.imagen4{
+    width: v.$width2;
+}
+
+.texto{
+    font-size: 1.5em;
+    text-align: v.$aling;
+    font-family: "DM Sans", sans-serif;
+    padding: 10px;
+}
+
+
+
+

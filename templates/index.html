@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es-ar">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="{{ url_for('static', filename='assets/Xbox_one_logo.svg.png') }}" type="image/x-icon">
+  <title>Xbox</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+    rel="stylesheet">
+  <meta name="description" content="Información completa sobre Xbox: consolas, servicios y catálogo de juegos.">
+  <meta name="keywords"
+    content="xbox, xbox series x, xbox series s, game pass, juegos xbox, consolas xbox, xbox argentina, microsoft xbox, novedades xbox, servicios xbox">
+  <meta name="author" content="Agustin Ventrice">
+  <meta property="og:image"
+    content="https://raw.githubusercontent.com/agustinvencdm/coderhouse-comision-85040/refs/heads/main/assets/Xbox-Logo.wine.png">
+</head>
+
+<body>
+
+
+  <header class="header">
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+          aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a href="{{ url_for('index') }}"><img src="{{ url_for('static', filename='assets/Xbox-Logo.wine.png') }}" alt=""
+            class="logo-principal"></a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('suscripciones') }}">Suscrpciones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('juegos') }}">Juegos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('consolas') }}">Consolas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('contacto') }}">Contacto</a>
+            </li>
+
+          </ul>
+          <form class="d-flex flex-column" role="search">
+            <div class="d-flex">
+              <input id="buscador" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" />
+              <button class="btn btn-outline-success" type="submit">Buscar</button>
+            </div>
+            <span id="mensaje-busqueda"></span>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+
+  </header>
+
+  <main>
+    <section class="historia">
+      <div class="conjuntoimg">
+        <img class="imagen1" src="{{ url_for('static', filename='assets/500_333.jpeg') }}" alt="imagenxbox">
+        <img class="imagen2" src="{{ url_for('static', filename='assets/116b6299-2786-4d6d-a4cf-df5ef9ae141e.jpg') }}"
+          alt="imagenxbox">
+        <img class="imagen3" src="{{ url_for('static', filename='assets/xbox-series-xs-2903174.webp') }}"
+          alt="imagenxbox">
+        <img class="imagen4"
+          src="{{ url_for('static', filename='assets/xbox-raises-prices-on-consoles-games-and-controllers-v0-N7AXZZnrstu2ksbWQAyoG_klpc1C_WMEhlpOoXp-qtU.webp') }}">
+      </div>
+      <p id="contenido" class="texto">Xbox es una marca de videojuegos creada y desarrollada por Microsoft. Fue lanzada
+        en el año 2001
+        con la llegada
+        de su primera consola, la Xbox original, marcando la entrada de Microsoft en el mercado de los videojuegos. En
+        2005, Microsoft lanzó la Xbox 360, una consola que marcó una época dorada para la empresa. Con un diseño más
+        estilizado y una gran variedad de juegos exclusivos, la Xbox 360 se convirtió en una de las consolas más
+        exitosas
+        de la historia. También consolidó el servicio Xbox Live Gold. En 2013, llegó la Xbox One, con el objetivo de
+        integrar no solo los videojuegos, sino también otros tipos de entretenimiento, como películas, música y
+        televisión. Aunque tuvo un lanzamiento algo polémico por algunas decisiones iniciales de Microsoft, la compañía
+        supo revertir la situación con el tiempo gracias a actualizaciones.En 2020, Microsoft lanzó la nueva generación
+        con Xbox Series X y Series S, dos consolas que destacan por su potencia, rapidez y compatibilidad. La Series X,
+        en
+        particular, es considerada una de las consolas más potentes jamás creadas, con soporte para gráficos en 4K,
+        trazado de rayos (ray tracing) y velocidades de carga muy rápidas gracias a su unidad SSD.
+
+        Hoy en día, Xbox no solo representa una consola, sino un ecosistema completo de entretenimiento digital, que
+        abarca consolas, computadoras, juegos en la nube, accesorios, y una comunidad global de millones de jugadores.
+        Su visión es ofrecer a los usuarios la libertad de jugar lo que quieran, donde quieran y como quieran, sin
+        importar
+        el dispositivo. En conjunto, este ecosistema busca que tu biblioteca de juegos, tus progresos y tus amigos te
+        acompañen en cualquier dispositivo compatible, manteniendo una experiencia unificada.</p>
+    </section>
+  </main>
+
+  <footer class="xbox-footer">
+
+    <div class="seguinos">
+      <h2>Seguinos</h2>
+      <div class="iconos">
+        <a href="https://whatsapp.com/channel/0029Va4J1hI5a248Y7hu6A2Y" target="_blank"><img
+            src="{{ url_for('static', filename='assets/whatsapp.png') }}" alt=""></a>
+        <a href="https://www.tiktok.com/@xbox?lang=es" target="_blank"><img
+            src="{{ url_for('static', filename='assets/tik-tok.png') }}" alt=""></a>
+        <a href="https://x.com/xbox" target="_blank"><img src="{{ url_for('static', filename='assets/gorjeo.png') }}"
+            alt=""></a>
+        <a href="https://www.facebook.com/xbox/?locale=es_LA" target="_blank"><img
+            src="{{ url_for('static', filename='assets/facebook.png') }}" alt=""></a>
+        <a href="https://www.instagram.com/xbox/?hl=es" target="_blank"><img
+            src="{{ url_for('static', filename='assets/logotipo-de-instagram.png') }}" alt=""></a>
+      </div>
+    </div>
+
+    <div class="logo">
+      <img src="{{ url_for('static', filename='assets/logo xbox blanco.jpg') }}" alt="Xbox logo">
+    </div>
+    <div class="derechos">
+      <h3>© 2025 - Sitio de Xbox - Todos los derechos reservados - Desarrollado por Agustin Ventrice</h3>
+    </div>
+
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+    </script>
+  <script src="{{ url_for('static', filename='js/buscador.js') }}"></script>
+
+
+</body>
+
+</html>

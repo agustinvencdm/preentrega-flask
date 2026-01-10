@@ -1,0 +1,46 @@
+@use "variables"as v;
+
+
+// FOOTER
+.xbox-footer {
+    background-color: v.$bg-color;
+    color: v.$text-color;
+    padding: 20px 30px;
+    font-family: v.$font;
+    text-align: center;
+
+    .seguinos {
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        .iconos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            img {
+                height: 35px;
+            }
+            :hover{
+                transform: translateY(-3px);
+            }
+        }
+    }
+
+    .logo {
+        img {
+            width: 200px;
+        }
+    }
+    .derechos{
+        width: 100%;
+        h3{
+            font-size: 0.9rem;
+        }
+    }
+}
+
+
+

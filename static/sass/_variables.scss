@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+//medidas
+$width: 40px;
+$width2: 25%;
+$width3: 300px;
+$margin: 0px;
+$aling: center;
+$fuente: Orbitron;
+$fuente2: Dm+Sans;
+$background: green;
+$background-image: url(../assets/ce13dda8-1f94-423c-a216-01bc39922a62.jpg);
+
+// VARIABLES
+$bg-color: #000;
+$text-color: #fff;
+$link-color: #ccc;
+$hover-color: #0f7b0f;
+$font: Arial,
+sans-serif;
+
+// MIXIN
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+

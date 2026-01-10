@@ -1,0 +1,39 @@
+@use "variables" as v;
+
+
+.consolas{
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+    flex-wrap: wrap;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.consola{
+    width: 350px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.consola img{
+    width: 100%;
+    height: 350px;
+    object-fit: contain;
+}
+
+.consola ul{
+    padding: 0;
+    list-style: none;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.consola li{
+    padding: 0;
+    border-bottom: 1px solid green;
+}
+
+
+
+
