@@ -2,36 +2,46 @@ const form = document.querySelector("form");
 const buscador = document.getElementById("buscador");
 const mensaje = document.getElementById("mensaje-busqueda");
 
-// En Flask los archivos estáticos se sirven en /static/... — usar ruta absoluta evita 404
+// En Flask los archivos estáticos se sirven en /static/...
 const jsonRuta = "/static/js/textos.json";
 
 let textos = {};
 
+// -----------------------------
 // Carga del JSON
+// -----------------------------
 fetch(jsonRuta)
   .then((res) => res.json())
   .then((data) => (textos = data))
   .catch((err) => console.error("Error cargando JSON:", err));
 
+// -----------------------------
+// Buscar palabra
+// -----------------------------
 function buscarPalabra(palabra, paginaActual, esRedireccion = false) {
   palabra = palabra.toLowerCase();
   let encontrada = false;
 
-  // Limpiamos el mensaje siempre que se inicia una búsqueda
   mensaje.textContent = "";
 
-  // Normalizar nombre de la página (para Flask: '/consolas' -> 'consolas.html')
+  // Normalizar nombre de página
   if (paginaActual === "" || paginaActual === "index.html") {
     paginaActual = "index.html";
   } else if (!paginaActual.endsWith(".html")) {
-    paginaActual = paginaActual + ".html";
+    paginaActual += ".html";
   }
 
   // --- 1️⃣ Buscar en la página actual ---
   if (textos[paginaActual]) {
     const bloques = document.querySelectorAll(".contenido, #contenido");
+
     bloques.forEach((b) => {
-      const original = b.innerHTML; // 🔥 CAMBIO CLAVE
+      // 🔹 Limpiar resaltados anteriores
+      b.querySelectorAll(".resaltado").forEach((span) => {
+        span.replaceWith(span.textContent);
+      });
+
+      const original = b.innerHTML;
       const textoPlano = b.textContent;
       const regex = new RegExp(`(${palabra})`, "gi");
 
@@ -47,7 +57,7 @@ function buscarPalabra(palabra, paginaActual, esRedireccion = false) {
         if (primera) {
           primera.scrollIntoView({
             behavior: "smooth",
-            block: "center"
+            block: "center",
           });
         }
       }
@@ -64,13 +74,10 @@ function buscarPalabra(palabra, paginaActual, esRedireccion = false) {
       );
 
       if (coincide) {
-        // Mapear nombreArchivo a ruta del servidor Flask: index.html -> '/', consolas.html -> '/consolas', etc.
-        let rutaFinal;
-        if (nombreArchivo === "index.html") {
-          rutaFinal = "/";
-        } else {
-          rutaFinal = "/" + nombreArchivo.replace(".html", "");
-        }
+        const rutaFinal =
+          nombreArchivo === "index.html"
+            ? "/"
+            : "/" + nombreArchivo.replace(".html", "");
 
         window.location.href = `${rutaFinal}?buscar=${encodeURIComponent(
           palabra
@@ -79,17 +86,33 @@ function buscarPalabra(palabra, paginaActual, esRedireccion = false) {
       }
     }
 
-    // Si llegamos aquí, no estaba en ninguna parte
     mensaje.textContent = `No se encontró: "${palabra}"`;
   }
+
   return encontrada;
 }
 
-// --- 3️⃣ Evento Submit ---
+// -----------------------------
+// Esperar contenido (consolas)
+// -----------------------------
+function esperarContenidoYBuscar(palabra, paginaActual) {
+  const interval = setInterval(() => {
+    const bloques = document.querySelectorAll(".contenido, #contenido");
+
+    if (bloques.length > 0 && bloques[0].textContent.trim() !== "") {
+      clearInterval(interval);
+      buscarPalabra(palabra, paginaActual, true);
+    }
+  }, 50);
+}
+
+// -----------------------------
+// Evento submit
+// -----------------------------
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  const palabra = buscador.value.trim();
 
+  const palabra = buscador.value.trim();
   if (!palabra) {
     mensaje.textContent = "Escribe algo para buscar.";
     return;
@@ -99,7 +122,9 @@ form.addEventListener("submit", (e) => {
   buscarPalabra(palabra, paginaActual);
 });
 
-// --- 4️⃣ Carga con parámetros URL ---
+// -----------------------------
+// Carga con parámetros URL
+// -----------------------------
 window.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const palabraABuscar = params.get("buscar");
@@ -107,8 +132,6 @@ window.addEventListener("DOMContentLoaded", () => {
   if (palabraABuscar) {
     buscador.value = palabraABuscar;
     const paginaActual = window.location.pathname.split("/").pop();
-    setTimeout(() => {
-      buscarPalabra(palabraABuscar, paginaActual, true);
-    }, 100);
+    esperarContenidoYBuscar(palabraABuscar, paginaActual);
   }
 });
