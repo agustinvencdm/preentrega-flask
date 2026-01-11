@@ -16,8 +16,11 @@ form.addEventListener("submit", function (e) {
 
     // No bloqueamos con alert, el backend validará también
     // pero podemos mostrar el mensaje inmediatamente si no se completó
-    if (!recaptchaResponse && recaptchaError) {
-        recaptchaError.textContent = "Por favor, completa el reCAPTCHA";
+    if (!recaptchaResponse) {
+        if (recaptchaError) {
+            recaptchaError.textContent = "Por favor, completa el reCAPTCHA";
+        }
+        return; //  NO enviar el formulario
     }
 
     // Mostrar spinner
