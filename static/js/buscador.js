@@ -31,20 +31,25 @@ function buscarPalabra(palabra, paginaActual, esRedireccion = false) {
   if (textos[paginaActual]) {
     const bloques = document.querySelectorAll(".contenido, #contenido");
     bloques.forEach((b) => {
-      const original = b.textContent;
+      const original = b.innerHTML; // 🔥 CAMBIO CLAVE
+      const textoPlano = b.textContent;
       const regex = new RegExp(`(${palabra})`, "gi");
 
-      if (original.toLowerCase().includes(palabra)) {
+      if (textoPlano.toLowerCase().includes(palabra)) {
         b.innerHTML = original.replace(
           regex,
           `<span class="resaltado">$1</span>`
         );
+
         encontrada = true;
+
         const primera = b.querySelector(".resaltado");
-        if (primera)
-          primera.scrollIntoView({ behavior: "smooth", block: "center" });
-      } else {
-        b.innerHTML = original;
+        if (primera) {
+          primera.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          });
+        }
       }
     });
   }
