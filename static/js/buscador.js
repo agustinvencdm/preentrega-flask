@@ -7,17 +7,17 @@ const jsonRuta = "/static/js/textos.json";
 
 let textos = {};
 
-// -----------------------------
+// ----------------------------------
 // Carga del JSON
-// -----------------------------
+// ----------------------------------
 fetch(jsonRuta)
   .then((res) => res.json())
   .then((data) => (textos = data))
   .catch((err) => console.error("Error cargando JSON:", err));
 
-// -----------------------------
+// ----------------------------------
 // Buscar palabra
-// -----------------------------
+// ----------------------------------
 function buscarPalabra(palabra, paginaActual, esRedireccion = false) {
   palabra = palabra.toLowerCase();
   let encontrada = false;
@@ -92,23 +92,42 @@ function buscarPalabra(palabra, paginaActual, esRedireccion = false) {
   return encontrada;
 }
 
-// -----------------------------
-// Esperar contenido (consolas)
-// -----------------------------
-function esperarContenidoYBuscar(palabra, paginaActual) {
-  const interval = setInterval(() => {
-    const bloques = document.querySelectorAll(".contenido, #contenido");
+// ----------------------------------
+// Esperar a que el contenido esté estable
+// ----------------------------------
+function esperarContenidoEstableYBuscar(palabra, paginaActual) {
+  const contenedores = document.querySelectorAll(".contenido, #contenido");
+  if (!contenedores.length) return;
 
-    if (bloques.length > 0 && bloques[0].textContent.trim() !== "") {
-      clearInterval(interval);
+  let timeout;
+
+  const observer = new MutationObserver(() => {
+    clearTimeout(timeout);
+
+    timeout = setTimeout(() => {
+      observer.disconnect();
       buscarPalabra(palabra, paginaActual, true);
-    }
-  }, 50);
+    }, 100);
+  });
+
+  contenedores.forEach((c) => {
+    observer.observe(c, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+    });
+  });
+
+  // fallback por si no hay mutaciones
+  setTimeout(() => {
+    observer.disconnect();
+    buscarPalabra(palabra, paginaActual, true);
+  }, 500);
 }
 
-// -----------------------------
+// ----------------------------------
 // Evento submit
-// -----------------------------
+// ----------------------------------
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -122,9 +141,9 @@ form.addEventListener("submit", (e) => {
   buscarPalabra(palabra, paginaActual);
 });
 
-// -----------------------------
+// ----------------------------------
 // Carga con parámetros URL
-// -----------------------------
+// ----------------------------------
 window.addEventListener("DOMContentLoaded", () => {
   const params = new URLSearchParams(window.location.search);
   const palabraABuscar = params.get("buscar");
@@ -132,6 +151,6 @@ window.addEventListener("DOMContentLoaded", () => {
   if (palabraABuscar) {
     buscador.value = palabraABuscar;
     const paginaActual = window.location.pathname.split("/").pop();
-    esperarContenidoYBuscar(palabraABuscar, paginaActual);
+    esperarContenidoEstableYBuscar(palabraABuscar, paginaActual);
   }
 });
