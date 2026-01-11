@@ -18,7 +18,7 @@ SMTP_USER = os.environ.get("SMTP_USER")
 SMTP_PASS = os.environ.get("SMTP_PASS")
 MAIL_DESTINO = os.environ.get("MAIL_DESTINO")
 
-RECAPTCHA_SECRET = os.environ.get("RECAPTCHA_SECRET")
+RECAPTCHA_SECRET = os.environ.get("RECAPTCHA_SECRET_KEY")
 
 # ======================
 # RUTAS FRONTEND
