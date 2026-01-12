@@ -12,9 +12,9 @@ CORS(app)
 # ======================
 # CONFIGURACIÓN MAIL (ENV)
 # ======================
+# Para Gmail con SSL usamos el puerto 465
 SMTP_SERVER = "smtp.gmail.com"
-SMTP_PORT = 587
-# Usamos .get() con strings vacíos por defecto para evitar errores de tipo None
+SMTP_PORT = 465
 SMTP_USER = os.environ.get("SMTP_USER", "")
 SMTP_PASS = os.environ.get("SMTP_PASS", "")
 MAIL_DESTINO = os.environ.get("MAIL_DESTINO", "")
@@ -61,10 +61,9 @@ def contacto():
 
     # -------- RECAPTCHA (Verificación con Google) --------
     try:
-        # Si la variable de entorno está vacía, esto lanzará un error 500 controlado
         if not RECAPTCHA_SECRET:
             print("ERROR: Falta RECAPTCHA_SECRET_KEY en las variables de entorno.")
-            return jsonify(error="Error de configuración en el servidor"), 500
+            return jsonify(error="Error de configuración de seguridad"), 500
 
         r = requests.post(
             "https://www.google.com/recaptcha/api/siteverify",
@@ -72,7 +71,7 @@ def contacto():
                 "secret": RECAPTCHA_SECRET,
                 "response": recaptcha_token
             },
-            timeout=10 # Evita que el servidor se cuelgue si Google tarda
+            timeout=10
         )
         recaptcha_verify = r.json()
         
@@ -86,7 +85,6 @@ def contacto():
 
     # -------- ENVÍO DE MAIL --------
     try:
-        # Verificación de que el servidor tiene datos para enviar
         if not SMTP_USER or not SMTP_PASS or not MAIL_DESTINO:
             print("ERROR: Faltan variables de entorno para el correo.")
             return jsonify(error="Configuración de correo incompleta"), 500
@@ -96,12 +94,10 @@ def contacto():
         msg["From"] = SMTP_USER
         msg["To"] = MAIL_DESTINO
         msg["Reply-To"] = email
-
         msg.set_content(f"Nombre: {name}\nEmail: {email}\nTeléfono: {number}\n\nMensaje:\n{message}")
 
-        # Conexión SMTP con Timeout
-        with smtplib.SMTP(SMTP_SERVER, SMTP_PORT, timeout=15) as server:
-            server.starttls()
+        # Uso de SMTP_SSL para mayor compatibilidad con Render y Gmail
+        with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT, timeout=15) as server:
             server.login(SMTP_USER, SMTP_PASS)
             server.send_message(msg)
 
@@ -109,9 +105,10 @@ def contacto():
 
     except smtplib.SMTPAuthenticationError:
         print("ERROR: Fallo de autenticación SMTP. Revisar App Password.")
-        return jsonify(error="Error de acceso al correo"), 500
+        return jsonify(error="Error de acceso al correo (Autenticación)"), 500
     except Exception as e:
-        print(f"ERROR SMTP: {e}")
+        # Imprime el error exacto en los logs de Render para debuguear
+        print(f"ERROR SMTP DETALLADO: {e}")
         return jsonify(error="No se pudo enviar el correo"), 500
 
 # --- Otras rutas ---
